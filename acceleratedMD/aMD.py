@@ -9,7 +9,7 @@ from general.new_toolbox import GatheringEnergy as ge
 directory = "/Users/aref/work/scratches/test/prod"
 # directory to the starting structure (e.g.: namd.pdb)
 path = "/Users/aref/work/scratches/test/struct"
-prot_segname = "whatever"
+prot_segname = ""
 # select the steps you want to calculate their corresponding average energy
 files = ge.create_lst_of_files(directory, 6, 10, "prod", ".", "out")
 ########################################

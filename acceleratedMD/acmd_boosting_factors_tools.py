@@ -74,7 +74,7 @@ class acmd_tools:
             exit(1)
 
         if len(read) == 0:
-            print('\nCould not parse the segment name -_-\n')
+            print('\nCould not parse the PROTEIN segment name -_-\n')
             exit(1)
 
         # gather lines of the same residues
