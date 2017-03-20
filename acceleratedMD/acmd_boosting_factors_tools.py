@@ -47,7 +47,7 @@ class acmd_tools:
         print('alpha = ', pot_alpha)
         print('===============================')
 
-    def count_residues(self, path, file_name, segment="PROT"):
+    def count_residues(self, path, file_name, segment):
         """
         count the residue in a pdb written by NAMD
         the default segment name ist "PROT" -- Case sensitive --
@@ -56,8 +56,13 @@ class acmd_tools:
         :return: integer; the number of residues
         """
         os.chdir(path)
+        if segment is None:
+            segname = "PROT"
+        else:
+            segname = segment
+
         read = []
-        pattern = "\s" + segment
+        pattern = "\s" + segname
         try:
             inf = open(file_name, "r")
             for l in inf:
@@ -65,7 +70,7 @@ class acmd_tools:
                     read.append(l)
             inf.close()
         except IOError:
-            print('\nFile'+file_name+' was not found\n')
+            print('\nFile' + file_name + ' was not found\n')
             exit(1)
 
         if len(read) == 0:
@@ -80,7 +85,7 @@ class acmd_tools:
         set_residues = set(residue)
         return len(set_residues)
 
-    def count_atoms_of_segment(self, path, file_name, segname):
+    def count_atoms_of_segment(self, path, file_name, seg):
         """
         Count the number of atoms in a pdb file written by NAMD
         The counting based on the segment name
@@ -89,6 +94,11 @@ class acmd_tools:
         :return: integer; the number of atoms in the givin segment
         """
         os.chdir(path)
+        if seg is None:
+            segname = "PROT"
+        else:
+            segname = seg
+            
         read = []
         try:
             inf = open(file_name, "r")

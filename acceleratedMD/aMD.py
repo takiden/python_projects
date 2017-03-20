@@ -1,12 +1,17 @@
 import sys
-sys.path.append("/home/users/a/aref.takiden/Dropbox/pythonProjects/general_package")
-from general_package.new_toolbox import GatheringEnergy
-from aMD.acmd_boosting_factors_tools import acmd_tools
+sys.path.append("..")
+from acceleratedMD.acmd_boosting_factors_tools import acmd_tools
+from general.new_toolbox import GatheringEnergy
 import numpy as np
 
 
-# directory of the production files
-directroy = "/work/aref.takiden/acmd/cph1/more-acceleration-from-1run/h470hsp/prod"
+# directory to the production files
+directroy = "/Users/aref/work/scratches/test/prod"
+# directory to the starting structure (e.g.: namd.pdb)
+path = "/Users/aref/work/scratches/test/struct"
+segname = None
+########################################
+########################################
 ge = GatheringEnergy(directroy)
 files = ge.create_lst_of_files(6, 10, "prod", ".", "out")
 # grapping the energy lines for the output
@@ -30,7 +35,6 @@ print('Average potential energy = ', pot_aver)
 ac = acmd_tools()
 
 # the directroy to your structure file (*.pdb)
-path = "/work/aref.takiden/acmd/cph1/more-acceleration-from-1run/h470hsp/solve_and_neutralize"
 struct_file = "namd.pdb"
 
 # number of solute residues
