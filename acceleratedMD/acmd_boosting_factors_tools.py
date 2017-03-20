@@ -94,15 +94,11 @@ class acmd_tools:
         :return: integer; the number of atoms in the givin segment
         """
         os.chdir(path)
-        if seg is None:
-            segname = "PROT"
-        else:
-            segname = seg
             
         read = []
         try:
             inf = open(file_name, "r")
-            pattern = "\s" + segname
+            pattern = "\s" + seg
             for l in inf:
                 if re.search(pattern, l, re.M):
                     read.append(l)

@@ -6,22 +6,19 @@ class GatheringEnergy:
     this very short class is simply to create a list of files that are in a directory
      and then extract the energy terms out of these files
     """
-
-    def __init__(self, path):
-        try:
-            os.chdir(path)
-        except FileNotFoundError:
-            print('\nDirectory \n\t{}\nwas not found.\nTerminating\n'.format(path))
-            exit()
-        self.path = path
-
-    def gather_energies(self, lst_of_files):
+    @staticmethod
+    def gather_energies(path, lst_of_files):
         """
         gathered the energies from the list of files and write them into one file
         and return void
         :return list
         """
-        os.chdir(self.path)
+        try:
+            os.chdir(path)
+        except FileNotFoundError:
+            print('\nDirectory \n\t{}\nwas not found.\nTerminating\n'.format(path))
+            exit(1)
+
         energies = []
         damaged_files = {}
         for f in lst_of_files:
@@ -64,13 +61,21 @@ class GatheringEnergy:
         else:
             return energies
 
-    def renumber_timesteps_of_energies(self, lst_of_energies, config_name):
+    @staticmethod
+    def renumber_timesteps_of_energies(path, lst_of_energies, config_name):
         """
         reads the energies form function: gather_energies and the configuration file
+        :param path: str
         :param lst_of_energies: list
         :param config_name: string
         :return: list
         """
+        try:
+            os.chdir(path)
+        except FileNotFoundError:
+            print('\nDirectory \n\t{}\nwas not found.\nTerminating\n'.format(path))
+            exit(1)
+
         try:
             inf = open(config_name, "r")
             read = inf.readlines()
@@ -101,9 +106,11 @@ class GatheringEnergy:
 
         return final
 
-    def create_lst_of_files(self, start_num_of_files, last_num_of_files, prefix, seperator, extension):
+    @staticmethod
+    def create_lst_of_files(path, start_num_of_files, last_num_of_files, prefix, seperator, extension):
         """
         create a list of arbitrary number of files that exists in a folder
+        :param path: str
         :param start_num_of_files: int
         :param last_num_of_files: int
         :param prefix: string
@@ -111,7 +118,13 @@ class GatheringEnergy:
         :param extension: string
         :return: list
         """
-        os.chdir(self.path)
+        try:
+            os.chdir(path)
+            print(path)
+        except FileNotFoundError:
+            print('\nDirectory \n\t{}\nwas not found.\nTerminating\n'.format(path))
+            exit()
+
         files = []
         i = start_num_of_files
         if isinstance(last_num_of_files, int):
