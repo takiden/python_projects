@@ -1,6 +1,3 @@
-import sys
-
-sys.path.append("..")  # adding python_projects folder to PYTHONLIBRARY
 import numpy as np
 from acceleratedMD.acmd_boosting_factors_tools import acmd_tools
 from general.new_toolbox import GatheringEnergy as ge
