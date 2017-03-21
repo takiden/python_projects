@@ -331,26 +331,35 @@ class PdbTools:
 
         return formated_seq
 
-    def get_resid(self, line=None):
+    def get_resid(self, line=None, segname=None):
         """
         just get the resid out of a line or from the "self.lst variable"
+        :param segname: string(optional, but case-sensitive if used)
         :param line:str (optional)
-        :return:str/list
+        :return:str/set
         """
-        if line is not None:
-            resid = line[22:26].strip()
-            return resid
-        else:
+        lst = []
+        if segname is not None:
+            lst = self.get_segment(segname)
+
+        if line is None and segname is not None:
+            id = []
+            for line in lst:
+                id.append(line[22:26].strip())
+            return set(id)
+        elif line is None and segname is None:
             try:
                 residlst = []
                 # check if a file is given by initialization or not
                 len(self.lst) > 0
                 for l in self.lst:
                     residlst.append(l[22:26])
-                return residlst
+                return set(residlst)
             except IOError:
                 print('wrong argument. Either you name your file by initializing the instance, or you '
                       'provide a line from a pdb-file')
+        elif line is not None and segname is None:
+            return line[22:26].strip()
 
     def get_segment(self, segname):
         """
@@ -364,7 +373,7 @@ class PdbTools:
                 segment.append(l)
         return segment
 
-    def get_residue(self, resid, segname):
+    def get_residue(self, resid, segment_list):
         """
         get all corresponding lines of a residue from the pdb file
         :param resid: int
@@ -373,8 +382,8 @@ class PdbTools:
         """
         id_ = str(resid)
         residue = []
-        for l in segname:
-            if id_ == self.get_resid(l):
+        for l in segment_list:
+            if id_ == self.get_resid(l, None):
                 residue.append(l)
 
         return residue
