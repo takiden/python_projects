@@ -11,6 +11,9 @@ directory = "/Users/aref/work/scratches/test/prod"
 # directory to the starting structure (e.g.: namd.pdb)
 path = "/Users/aref/work/scratches/test/struct"
 
+# the directroy to your structure file (*.pdb)
+struct_file = "namd.pdb"
+
 prot_segname = ""
 
 # select the steps you want to calculate their corresponding average energy
@@ -38,9 +41,6 @@ print('Average potential energy = ', pot_aver)
 ######################################
 # create an object of the class
 ac = acmd_tools()
-
-# the directroy to your structure file (*.pdb)
-struct_file = "namd.pdb"
 
 # number of solute residues
 # the third parameter is the segment name, which is by default PROT
