@@ -1,14 +1,21 @@
+import sys
+
+sys.path.append("..")  # adding python_projects folder to PYTHONLIBRARY
 import numpy as np
 from acceleratedMD.acmd_boosting_factors_tools import acmd_tools
 from general.new_toolbox import GatheringEnergy as ge
 
 # directory to the production files
 directory = "/Users/aref/work/scratches/test/prod"
+
 # directory to the starting structure (e.g.: namd.pdb)
 path = "/Users/aref/work/scratches/test/struct"
+
 prot_segname = ""
+
 # select the steps you want to calculate their corresponding average energy
 files = ge.create_lst_of_files(directory, 6, 10, "prod", ".", "out")
+
 ########################################
 ######## Code               ############
 ########################################
