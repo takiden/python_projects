@@ -1,6 +1,7 @@
 import re
 import os
 import errno
+import collections
 import pandas as pd
 
 class SecondaryStructureAnalysisForVMD():
@@ -124,11 +125,12 @@ class SecondaryStructureAnalysisForVMD():
         # parameters for octave script
         legend = []
         x_names, y_names = [], []
-        for k in dict_sec.keys():
-            if len(dict_sec[k]) > 0:
+        sorted_dict_sec = collections.OrderedDict(sorted(dict_sec.items()))
+        for k in sorted_dict_sec.keys():
+            if len(sorted_dict_sec[k]) > 0:
                 frame, count = [], []
                 # gathering resutls for the secondary structure (k)
-                for i in dict_sec[k]:
+                for i in sorted_dict_sec[k]:
                     frame.append(i[0])
                     count.append(i[1].rstrip('\n'))
                 # writing these resutls (counts in each frame for the corresponding sec. struct.)
@@ -138,7 +140,7 @@ class SecondaryStructureAnalysisForVMD():
 
                 # writing statistical data
                 stat.write(k + ":\n")
-                df = pd.DataFrame.from_dict(dict_sec[k])
+                df = pd.DataFrame.from_dict(sorted_dict_sec[k])
                 df.iloc[:, 1] = pd.to_numeric(df.iloc[:, 1])
                 stat.write("STD of AA number = {}\n".format(df.iloc[:, 1].std(axis=0).__round__(1)))
                 stat.write("Mean of AA number = {}\n".format(df.iloc[:, 1].mean(axis=0).__round__(1)))
