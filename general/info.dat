@@ -1,0 +1,30 @@
+class GatheringEnergy:
+    def gather_energies(path, lst_of_files):
+    def renumber_timesteps_of_energies(path, lst_of_energies, config_name):
+    def create_lst_of_files(path, start_num_of_files, last_num_of_files, prefix, seperator, extension):
+class PdbTools:
+    def __init__(self, path, file_name=None):
+    def get_path(self):
+    def get_file_name(self):
+    def count_residues(self, file_name=None):
+        the default segment name ist "PROT" -- Case sensitive --
+    def count_atoms_of_segment(self, file_name, segname):
+    def get_segment_name_and_number(self, file_name):
+    def get_seq_from_pdb(self):
+    def one_letter_seq_format(self, lst):
+    def get_resid(self, line=None, segname=None):
+    def get_segment(self, segname):
+    def get_residue(self, resid, segment_list):
+    def get_index(self, atom_name):
+    def atom_info(self, atom_name, resid, segname):
+    def atom_dict(self, line):
+    def get_atom_line_by_name(self, line, atom_name):
+    def get_coor(atom_info_line):
+    def calculate_angle(coor_lst1, coor_lst2, coor_lst3):
+    def calculate_distance(self, atom1, atom2):
+    def calculate_distance_between_rings_pyrrole_water(self, file_name):
+    def cal_dihedral(self, p):
+class StaticTools():
+    def dssp_output_analyser(path, file_name):
+    def swap(self, a, b):
+    def convert_whitespace2csv(path, file_name):

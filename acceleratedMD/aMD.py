@@ -6,10 +6,10 @@ from acceleratedMD.acmd_boosting_factors_tools import acmd_tools
 from general.new_toolbox import GatheringEnergy as ge
 
 # directory to the production files
-directory = "/Users/aref/work/scratches/test/prod"
+directory = "/Users/aref/ownCloud/Progress_report/slides/2017/introduction_to_my_scripts/live-demos/acmd/prod"
 
 # directory to the starting structure (e.g.: namd.pdb)
-path = "/Users/aref/work/scratches/test/struct"
+path = "/Users/aref/ownCloud/Progress_report/slides/2017/introduction_to_my_scripts/live-demos/acmd/struct"
 
 # the directroy to your structure file (*.pdb)
 struct_file = "namd.pdb"

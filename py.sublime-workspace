@@ -24,18 +24,14 @@
 	"buffers":
 	[
 		{
-			"file": "general/new_toolbox.py",
+			"contents": "import sys\n\nsys.path.append(\"..\")  # adding python_projects folder to PYTHONLIBRARY\nfrom sec_struct_analysis.sec_struct_analysis_from_vmd import SecondaryStructureAnalysisForVMD as rs\n\n# directory to the data file from VMD\npath_to_file = '/Users/aref/work/scratches/met/prod/stage3/analysis/normal/normal.dat'\n\n# starting the class as file1\nfile1 = rs(path_to_file)\n# run a secondary structure analysis\nfile1.sec_struct_analysis()\n# run an analysis for each residue\nfile1.residues_sec_struct()\n# generate octave code to plot the results\n#file1.octave_for_residues(91)\n",
+			"file": "sec_struct_analysis/draft.py",
+			"file_size": 567,
+			"file_write_time": 131351734890000000,
 			"settings":
 			{
-				"buffer_size": 20143,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "acceleratedMD/aMD.py",
-			"settings":
-			{
-				"buffer_size": 1965,
+				"buffer_size": 568,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		}
@@ -78,15 +74,16 @@
 	"expanded_folders":
 	[
 		"/Users/aref/python_projects",
-		"/Users/aref/python_projects/acceleratedMD",
-		"/Users/aref/python_projects/general"
+		"/Users/aref/python_projects/docs",
+		"/Users/aref/python_projects/sec_struct_analysis"
 	],
 	"file_history":
 	[
+		"/Users/aref/python_projects/general/new_toolbox.py",
+		"/Users/aref/python_projects/acceleratedMD/aMD.py",
 		"/Users/aref/myDiss/docSetting/setting.tex",
 		"/Users/aref/myDiss/chapters/results/results.tex",
 		"/Users/aref/myDiss/main.tex",
-		"/Users/aref/python_projects/acceleratedMD/aMD.py",
 		"/Users/aref/python_projects/acceleratedMD/acmd_boosting_factors_tools.py",
 		"/Users/aref/Library/Application Support/Sublime Text 3/Packages/User/Anaconda.sublime-settings",
 		"/Users/aref/Library/Application Support/Sublime Text 3/Packages/Anaconda/Anaconda.sublime-settings",
@@ -137,54 +134,24 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "general/new_toolbox.py",
+					"file": "sec_struct_analysis/draft.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 20143,
+						"buffer_size": 568,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Python/Python.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "acceleratedMD/aMD.py",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1965,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
+								538,
+								538
 							]
 						],
 						"settings":
