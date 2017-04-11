@@ -5,3 +5,4 @@ sec_struct_analysis/draft.py
 sec_struct_analysis/__pycache__/*
 py.sublime-workspace
 py.sublime-project
+general/draft.py
