@@ -33,7 +33,9 @@ class SecondaryStructureAnalysisForVMD():
         except FileNotFoundError:
             print('\nThe file\n{}\nwas not found\n'.format(self.file_name))
             exit(errno.ENOENT)
-
+        except IsADirectoryError:
+            print('\nPlease give the name of the file, Not its directory\n')
+            exit(errno.ENOENT)
 
     def residues_sec_struct(self):
         """
@@ -135,6 +137,7 @@ class SecondaryStructureAnalysisForVMD():
                     count.append(i[1].rstrip('\n'))
                 # writing these resutls (counts in each frame for the corresponding sec. struct.)
                 with open(k + '.csv', 'w') as out:
+                    out.write("Frame, Count\n")
                     for x, y in zip(frame, count):
                         out.write(x + ',' + y + '\n')
 
@@ -147,8 +150,8 @@ class SecondaryStructureAnalysisForVMD():
                 del df
                 # writing octave plotting script
                 octave.write(k + "=csvread('" + k + ".csv');\n")
-                octave.write("x" + k + "=" + k + "(:,1);\n")
-                octave.write("y" + k + "=" + k + "(:,2);\n")
+                octave.write("x" + k + "=" + k + "(2:end,1);\n")
+                octave.write("y" + k + "=" + k + "(2:end,2);\n")
 
                 legend.append(k)
                 x_names.append("x" + k)
@@ -232,3 +235,5 @@ class SecondaryStructureAnalysisForVMD():
             print('\nError: The given resid = {} is not available in res_sec_structure.csv'.format(resid))
             print('Warning: Input code for octave was not written.')
         return
+
+    # def residues_in_sec_structure(self):

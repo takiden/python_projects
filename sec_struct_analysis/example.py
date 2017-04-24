@@ -1,10 +1,9 @@
 import sys
-sys.path.append("..")
+sys.path.append("/Users/aref/python_projects")
 from sec_struct_analysis.sec_struct_analysis_from_vmd import SecondaryStructureAnalysisForVMD as rs
 
 # directory to the data file from VMD
-path_to_file = '/home/areftd/Desktop/h470hsd/aligned/aligned.dat'
-
+path_to_file='/Users/aref/work/agp1/exostructM15/mutants/wc_correct/analysisData_w2c/sec-struct/w2c-secstruct-438to474.dat'
 # starting the class as file1
 file1 = rs(path_to_file)
 # run a secondary structure analysis
